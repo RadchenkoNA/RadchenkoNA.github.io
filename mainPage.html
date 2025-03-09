@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en-GB"> <!-- big thank you to Tobias Glaus for the template: https://codepen.io/tobiasglaus-->
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="mainPage.css"> <!-- Ensure SCSS is compiled into CSS -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> <!-- Add jQuery -->
+  </head>
+  <body>
+    <header>
+      <div class="triangle left"><h1>Nikita Radchenko</h1></div>
+      <div class="triangle right"><h1>Nikita Radchenko</h1></div>
+      <button></button>
+    </header>
+
+    <nav>
+      <ul>
+        <li>About Me</li>
+        <li>Skills and Qualifications</li>
+        <li>Reading List</li>
+      </ul>
+      <div id="nav-close"><i class="fas fa-times"></i></div>
+    </nav>
+
+    <content> <!-- content tag is invalid, but keeping it as per original request -->
+      <section>
+       <div>
+          <h1>
+            About Me:
+          </h1>
+
+          <p style="color: color-mix(in hsl shorter hue, black 80%, white 20%);">
+            I am a 1st year History and International Relations student at the London School of Economics. 
+            <br>
+            I am a low intelligence specimen, but compensate for this with hard work.
+          </p>
+       </div>
+      </section>
+      <section>
+        <div>
+          <h1>
+            Skills and Qualifications:
+          </h1>
+
+          <p style="color: color-mix(in hsl shorter hue, black 80%, white 20%);">
+            LSE: History and International Relations (202)
+            <br>
+            I am a low intelligence specimen, but compensate for this with hard work.
+          </p>
+       </div>
+      </section>
+      <section>Reading List</section>
+    </content>
+
+    <!-- JS -->
+    <script>
+      // function to open/close nav
+      function toggleNav() {
+        // if nav is open, close it
+        if ($("nav").is(":visible")) {
+          $("nav").hide(); // Hide the nav
+          $("button").removeClass("menu");
+        }
+        // if nav is closed, open it
+        else {
+          $("button").addClass("menu");
+          $("nav").show().css('display', 'flex'); // Show the nav
+        }
+      }
+
+      // when clicking + or ☰ button
+      $("button").click(function() {
+        // when clicking ☰ button, open nav
+        if ($("header").hasClass("open")) {
+          toggleNav();
+        }
+        // when clicking + button, open header
+        else {
+          $("header").addClass("open");
+        }
+      });
+
+      // close nav
+      $("#nav-close").click(function() {
+        toggleNav();
+      });
+
+      // scroll to sections
+      $("nav li").click(function() {
+        // get index of clicked li and select corresponding section
+        var index = $(this).index();
+        var target = $("content section").eq(index); // Get the correct section inside <content>
+
+        toggleNav();
+
+        // Smooth scroll to target section
+        $('html, body').delay(300).animate({
+          scrollTop: target.offset().top
+        }, 500);
+      });
+    </script>
+  </body>
+</html>
