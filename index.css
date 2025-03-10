@@ -57,8 +57,11 @@ header button {
 header button:hover {
   box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.5);
   transform: scale(1.1);
-  background-color: #403ca9;
+  
 }
+
+
+
 header button:focus {
   outline: 0;
 }
@@ -67,6 +70,7 @@ header button:before, header button:after {
   transition: all 0.8s cubic-bezier(0.645, 0.045, 0.355, 1);
   top: 17px;
   position: absolute;
+  animation: fadeOut 2s alternate-reverse infinite;
 }
 header button:before {
   font-family: "Montserrat", sans-serif;
@@ -81,6 +85,17 @@ header button:after {
   opacity: 0;
   left: 0;
 }
+
+@keyframes 
+fadeOut {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
 header .triangle {
   position: absolute;
   z-index: 1;
