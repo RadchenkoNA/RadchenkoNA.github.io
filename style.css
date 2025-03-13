@@ -7,6 +7,9 @@
 
 body {
   min-height: 300vh;
+  margin: 0;
+  width: 100vw;
+  height: 100vh;
   background-image: linear-gradient(to top, #4231a5 0%, #2180c9 100%);
 }
 
@@ -33,6 +36,18 @@ header h1 {
   font-size: 3em;
   color: #fff;
   font-family: "Montserrat", sans-serif;
+  animation: 2s fadeIn; 
+  text-shadow: 2px 1px 40px rgba(0, 0, 0, 0.5);
+}
+
+@keyframes 
+fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 
 header button {
