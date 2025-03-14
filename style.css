@@ -13,6 +13,13 @@ body {
   background-image: linear-gradient(to top, #4231a5 0%, #2180c9 100%);
 }
 
+.abtmediv {
+  width: 100vw;
+  border: 15px solid white;
+  padding: 50px;
+  margin: 20px;
+}
+
 header {
   position: fixed;
   width: 100%;
