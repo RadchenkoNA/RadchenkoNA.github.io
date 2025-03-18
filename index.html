@@ -5,6 +5,30 @@
     <meta charset="utf-8">
     <link rel="stylesheet" href="style.css"> <!-- Ensure SCSS is compiled into CSS -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> <!-- Add jQuery -->
+    <title>Contact Form</title>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script type="text/javascript">
+        (function() {
+            // https://dashboard.emailjs.com/admin/account
+            emailjs.init({
+              publicKey: "Ezv_JNgVs5NJwdl2G",
+            });
+        })();
+    </script>
+    <script type="text/javascript">
+        window.onload = function() {
+            document.getElementById('contact-form').addEventListener('submit', function(event) {
+                event.preventDefault();
+                // these IDs from the previous steps
+                emailjs.sendForm('contact_service', 'contact_form', this)
+                    .then(() => {
+                        console.log('SUCCESS!');
+                    }, (error) => {
+                        console.log('FAILED...', error);
+                    });
+            });
+        }
+    </script>
   </head>
   <body>
     <header>
@@ -118,20 +142,19 @@
           <br>
           <br>
           
-          <div class="formcarry-container">
-            <form action="emailForm.php" method="POST" class="formcarry-form">
-              <label for="name">Your Name</label>
-              <input type="text" id="name" name="fullName" required />
-      
-              <label for="email">Your Email Address</label>
-              <input type="email" id="email" name="email" required />
-      
-              <label for="message">Your Message</label>
-              <textarea name="message" id="message" cols="30" rows="10"></textarea>
-      
-              <button type="submit">Send</button>
-            </form>
-          </div>
+          <form id="contact-form">
+            <!-- To simplify the tutorial, the value is static. -->
+            <input type="hidden" name="time" value="Mar 10 2025 08:46">
+            <label>Name</label>
+            <input type="text" name="name" required>
+            <label>Email</label>
+            <input type="email" name="email" required>
+            <label>Subject</label>
+            <input type="text" name="title" required>
+            <label>Message</label>
+            <textarea name="message" required></textarea>
+            <input type="submit" value="Send">
+        </form>
             <div class="g-recaptcha" data-sitekey="6Lcmd_QqAAAAALmlrCSOKu3-8mI4BAKWT2xV3Laj"></div>
 
 
