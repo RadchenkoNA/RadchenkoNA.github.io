@@ -1,18 +1,21 @@
 @charset "UTF-8";
+
+/* General reset */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
+/* Body styling */
 body {
   min-height: 500vh;
-  margin: 0;
   width: 100vw;
   height: 100vh;
   background-image: linear-gradient(to top, #4231a5 0%, #2180c9 100%);
 }
 
+/* .textboxdivs styling */
 .textboxdivs {
   width: 90vw;
   border: 15px solid white;
@@ -21,6 +24,7 @@ body {
   background-color: rgba(255, 255, 255, 0.5);
 }
 
+/* Header styling */
 header {
   position: fixed;
   width: 100%;
@@ -31,8 +35,8 @@ header {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-
 }
+
 header h1, header button {
   position: relative;
   z-index: 10;
@@ -44,18 +48,8 @@ header h1 {
   font-size: 3em;
   color: #fff;
   font-family: "Montserrat", sans-serif;
-  animation: 2s fadeIn; 
+  animation: fadeIn 2s;
   text-shadow: 2px 1px 40px rgba(0, 0, 0, 0.5);
-}
-
-@keyframes 
-fadeIn {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
 }
 
 header button {
@@ -80,14 +74,12 @@ header button {
 header button:hover {
   box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.5);
   transform: scale(1.1);
-  
 }
-
-
 
 header button:focus {
   outline: 0;
 }
+
 header button:before, header button:after {
   font-family: "Font Awesome 5 Free";
   transition: all 0.8s cubic-bezier(0.645, 0.045, 0.355, 1);
@@ -95,6 +87,7 @@ header button:before, header button:after {
   position: absolute;
   animation: fadeOut 2s alternate-reverse infinite;
 }
+
 header button:before {
   font-family: "Montserrat", sans-serif;
   font-style: italic;
@@ -102,23 +95,24 @@ header button:before {
   content: "click me";
   opacity: 1;
   left: 23%;
-
 }
+
 header button:after {
   opacity: 0;
   left: 0;
 }
 
-@keyframes 
-fadeOut {
-  0% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 0;
-  }
+@keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
 }
 
+@keyframes fadeOut {
+  0% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+/* Triangular elements in the header */
 header .triangle {
   position: absolute;
   z-index: 1;
@@ -133,32 +127,40 @@ header .triangle {
   align-items: center;
   pointer-events: none;
 }
+
 header .triangle.left {
   clip-path: polygon(0 0, 0% 100%, 100% 100%);
 }
+
 header .triangle.right {
   clip-path: polygon(100% 0, 0 0, 100% 100%);
 }
+
 header.open .triangle.left {
   clip-path: polygon(0 0, 0 100%, 0 100%);
 }
+
 header.open .triangle.right {
   clip-path: polygon(100% 0, 100% 0, 100% 100%);
 }
+
 header.open button {
   left: 40px;
   bottom: 40px;
   width: 50px;
   border-radius: 50%;
 }
+
 header.open button:before {
   opacity: 0;
   left: 100%;
 }
+
 header.open button:after {
   opacity: 1;
   left: 18px;
 }
+
 header.open button.menu {
   width: 100%;
   height: 100%;
@@ -166,10 +168,12 @@ header.open button.menu {
   left: 0;
   border-radius: 0;
 }
+
 header.open button.menu:after {
   left: -100%;
 }
 
+/* Content sections */
 content section {
   height: 100vh;
   display: flex;
@@ -183,20 +187,22 @@ content section {
   color: #fff;
 }
 
+/* Navigation styling */
 nav {
   position: fixed;
   width: 100%;
   height: 100%;
   top: 0;
   left: 0;
-  display: flex;
+  display: none;
   justify-content: center;
   align-items: center;
-  display: none;
 }
+
 nav ul {
   list-style: none;
 }
+
 nav ul li {
   font-family: "Montserrat", sans-serif;
   font-weight: 700;
@@ -211,27 +217,17 @@ nav ul li {
   transform: translateY(-20px);
   transition: all 0.3s cubic-bezier(0.455, 0.03, 0.515, 0.955);
 }
+
 nav ul li:hover {
   text-shadow: 2px 1px 40px rgba(0, 0, 0, 0.5);
   opacity: 0.8;
 }
-nav ul li:nth-child(1) {
-  animation-delay: 0.8s;
-}
-nav ul li:nth-child(2) {
-  animation-delay: 0.9s;
-}
-nav ul li:nth-child(3) {
-  animation-delay: 1s;
-}
 
-nav ul li:nth-child(4) {
-  animation-delay: 1.1s;
-}
-
-nav ul li:nth-child(5) {
-  animation-delay: 1.2s;
-}
+nav ul li:nth-child(1) { animation-delay: 0.8s; }
+nav ul li:nth-child(2) { animation-delay: 0.9s; }
+nav ul li:nth-child(3) { animation-delay: 1s; }
+nav ul li:nth-child(4) { animation-delay: 1.1s; }
+nav ul li:nth-child(5) { animation-delay: 1.2s; }
 
 nav #nav-close {
   position: fixed;
@@ -245,6 +241,7 @@ nav #nav-close {
   color: #09203f;
   transform: translateY(-20px);
 }
+
 @keyframes fadeDown {
   0% {
     opacity: 0;
@@ -256,7 +253,65 @@ nav #nav-close {
   }
 }
 
-/* contact form css styling */
-
+/* Contact form styling */
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap");
 
+form label {
+  font-size: 1.2em;
+  color: #fff;
+  margin-bottom: 5px;
+  display: block;
+}
+
+form input,
+form textarea {
+  width: 90%;
+  padding: 10px;
+  margin-bottom: 20px;
+  font-size: 1.1em;
+  border: 2px solid #fff;
+  border-radius: 5px;
+  background-color: rgba(255, 255, 255, 0.9);
+  color: #333;
+  outline: none;
+}
+
+form input:focus,
+form textarea:focus {
+  border-color: #2180c9;
+  box-shadow: 0 0 5px rgba(33, 128, 201, 0.8);
+}
+
+form textarea {
+  height: 150px;
+  resize: vertical;
+}
+
+form button {
+  width: 100%;
+  padding: 15px;
+  font-size: 1.2em;
+  color: #fff;
+  background-color: #2180c9;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+form button:hover {
+  background-color: #4231a5;
+}
+
+section:last-of-type {
+  background-image: linear-gradient(to top, #2180c9 0%, #4231a5 100%);
+  z-index: 100;
+  position: relative;
+}
+
+#last-section {
+  display: none;
+  z-index: 100;
+  position: relative;
+  /* Additional styles for the last section */
+}

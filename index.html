@@ -1,40 +1,16 @@
 <!DOCTYPE html>
 <html lang="en-GB"> <!-- big thank you to Tobias Glaus for the template: https://codepen.io/tobiasglaus-->
   <head>
-    <script src='https://www.google.com/recaptcha/api.js'></script>
     <meta charset="utf-8">
     <link rel="stylesheet" href="style.css"> <!-- Ensure SCSS is compiled into CSS -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> <!-- Add jQuery -->
-    <title>Contact Form</title>
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-    <script type="text/javascript">
-        (function() {
-            // https://dashboard.emailjs.com/admin/account
-            emailjs.init({
-              publicKey: "Ezv_JNgVs5NJwdl2G",
-            });
-        })();
-    </script>
-    <script type="text/javascript">
-        window.onload = function() {
-            document.getElementById('contact-form').addEventListener('submit', function(event) {
-                event.preventDefault();
-                // these IDs from the previous steps
-                emailjs.sendForm('contact_service', 'contact_form', this)
-                    .then(() => {
-                        console.log('SUCCESS!');
-                    }, (error) => {
-                        console.log('FAILED...', error);
-                    });
-            });
-        }
-    </script>
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script> <!-- Add Google reCAPTCHA -->
   </head>
   <body>
     <header>
       <div class="triangle left"><h1>Nikita Radchenko</h1></div>
       <div class="triangle right"><h1>Nikita Radchenko</h1></div>
-      <button></button>
+      <button id="button"></button>
     </header>
 
     <nav>
@@ -134,32 +110,28 @@
        </div>
       </section>
       <section>Writing Samples</section>
-      <section>
+      <section id="last-section">
         <div class="textboxdivs">
           <span style="color: black;">Institutional Email:</span>
           <br>
             n.a.radchenko@lse.ac.uk
           <br>
           <br>
-          
-          <form id="contact-form">
-            <!-- To simplify the tutorial, the value is static. -->
-            <input type="hidden" name="time" value="Mar 10 2025 08:46">
-            <label>Name</label>
-            <input type="text" name="name" required>
-            <label>Email</label>
-            <input type="email" name="email" required>
-            <label>Subject</label>
-            <input type="text" name="title" required>
-            <label>Message</label>
-            <textarea name="message" required></textarea>
-            <input type="submit" value="Send">
-        </form>
-            <div class="g-recaptcha" data-sitekey="6Lcmd_QqAAAAALmlrCSOKu3-8mI4BAKWT2xV3Laj"></div>
-
-
-
-
+          <form>
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+            <br>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+            <br>
+            <label for="message">Message:</label>
+            <textarea id="message" name="message" required></textarea>
+  
+            <div class="g-recaptcha" data-sitekey="6LeNg_gqAAAAAMlJAPq-nahnsMNF3gTFnQnNiKbj"></div>
+  
+            <button type="submit">Submit</button>
+  
+          </form>
          
 
         </div>
@@ -167,6 +139,10 @@
       </section>
 
     </content>
+
+   
+
+   
 
     <!-- JS -->
     <script>
@@ -213,6 +189,19 @@
         $('html, body').delay(300).animate({
           scrollTop: target.offset().top
         }, 500);
+      });
+
+            const toggleButton = document.getElementById('button');
+      const lastSection = document.getElementById('last-section');
+
+      // Add an event listener for the button click
+      toggleButton.addEventListener('click', () => {
+        // Toggle the display of the last section
+        if (lastSection.style.display === 'none' || lastSection.style.display === '') {
+          lastSection.style.display = 'block';  // Show the last section
+        } else {
+          lastSection.style.display = 'none';  // Hide the last section again
+        }
       });
     </script>
   </body>
